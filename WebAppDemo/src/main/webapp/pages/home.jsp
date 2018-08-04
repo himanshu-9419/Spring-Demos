@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- I'm home.jsp Welcome <% String name=(String)request.getAttribute("name"); out.println(name); %> 
+ I'm home.jsp Welcome <% String name=(String)request.getAttribute("aName"); out.println(name); %> 
 </body>
 </html>

@@ -10,11 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 	@RequestMapping("home")
-	public ModelAndView home(@RequestParam("name") String name) {
+	public ModelAndView home(Alien alien) {
 		// we can remove req and res and add field I'm expecting and session
 		ModelAndView mv= new ModelAndView();
-		System.out.println("name is:"+name);
-		mv.addObject("name",name);
+		System.out.println("name is:"+alien);
+		mv.addObject("obj",alien);
 		mv.setViewName("home");
 		return mv;
 	}
