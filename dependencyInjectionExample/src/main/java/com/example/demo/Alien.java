@@ -3,6 +3,8 @@
  */
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,8 @@ public class Alien {
 	private int add;
 	private String aName;
 	private String tech;
+	@Autowired
+	@Qualifier("laptop1")
 	private Laptop laptop;
 	
 	

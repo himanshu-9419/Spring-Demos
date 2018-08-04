@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @author HimanshuArora
  *
  */
-@Component
+@Component("laptop1")
 public class Laptop {
 	
 	private int lid;
