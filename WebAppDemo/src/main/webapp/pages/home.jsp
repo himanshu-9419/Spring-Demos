@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- I'm home.jsp
+ I'm home.jsp Welcome ${sessionScope.name}
 </body>
 </html>
