@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-@Scope(value="prototype")
 public class Alien {
 	private int add;
 	private String aName;

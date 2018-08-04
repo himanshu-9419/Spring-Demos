@@ -3,10 +3,13 @@
  */
 package com.example.demo;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author HimanshuArora
  *
  */
+@Component
 public class Laptop {
 	
 	private int lid;
