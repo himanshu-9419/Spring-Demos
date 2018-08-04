@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 	@RequestMapping("home")
-	public String home(HttpServletRequest req,HttpServletResponse res) {
-		String name=req.getParameter("name");
+	public String home(String name,HttpSession session) {
+		// we can remove req and res and add field I'm expecting and session
 		System.out.println("home "+name);
-		HttpSession session= req.getSession();
 		session.setAttribute("name", name);
 		return "home";
 	}
