@@ -4,31 +4,32 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.AlienRepo;
 import com.example.demo.model.Alien;
 
-@Controller
+@RestController
 public class AlienController {
 	
 	@Autowired
 	AlienRepo repo;
 	
-	@RequestMapping("/")
-	public String home() {
-		return "home.jsp";
-	}
-	@RequestMapping("/addAlien")
-	public String addAlien(Alien alien) {
-		repo.save(alien);
-		return "home.jsp";
-	}
+//	@RequestMapping("/")
+//	public String home() {
+//		return "home.jsp";
+//	}
+//	@RequestMapping("/addAlien")
+//	public String addAlien(Alien alien) {
+//		repo.save(alien);
+//		return "home.jsp";
+//	}
 	
 	@RequestMapping("/getAlien")
 	public ModelAndView addAlien(@RequestParam Integer aid) {
@@ -41,15 +42,20 @@ public class AlienController {
 		return mv;
 	}
 	
-	@RequestMapping("/aliens")
-	@ResponseBody
+	@RequestMapping(path="/aliens",produces={"application/json"})
 	public List<Alien> getAlien() {
 		return repo.findAll();
 	}
 	
 	@RequestMapping("/alien/{aid}")
-	@ResponseBody
 	public Optional<Alien> getAlien(@PathVariable("aid") int aid) {
 		return repo.findById(aid);
+	}
+	
+	@RequestMapping(path="/alien",method=RequestMethod.POST)
+	public Alien addAlien(@RequestBody Alien alien) {
+		System.out.println(alien.toString());
+		repo.save(alien);
+		return alien;
 	}
 }
