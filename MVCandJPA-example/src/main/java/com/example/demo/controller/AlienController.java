@@ -47,15 +47,33 @@ public class AlienController {
 		return repo.findAll();
 	}
 	
-	@RequestMapping("/alien/{aid}")
-	public Optional<Alien> getAlien(@PathVariable("aid") int aid) {
-		return repo.findById(aid);
-	}
 	
+	
+	//C -> create
 	@RequestMapping(path="/alien",method=RequestMethod.POST)
 	public Alien addAlien(@RequestBody Alien alien) {
 		System.out.println(alien.toString());
 		repo.save(alien);
 		return alien;
+	}
+	
+	//R -> Read
+		@RequestMapping("/alien/{aid}")
+		public Optional<Alien> getAlien(@PathVariable("aid") int aid) {
+			return repo.findById(aid);
+		}
+	
+		//U -> Update
+	@RequestMapping(path="/alien",method=RequestMethod.PUT)
+	public Alien updateAlien(@RequestBody Alien alien) {
+		return repo.save(alien);
+	}
+	
+	//D -> Delete
+	@RequestMapping(path="/alien/{aid}",method=RequestMethod.DELETE)
+	public String deleteAlien(@PathVariable("aid") int aid) {
+		Alien a=repo.getOne(aid);
+		repo.delete(a);
+		return "deleted";
 	}
 }
