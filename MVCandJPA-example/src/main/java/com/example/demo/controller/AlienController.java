@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,13 +43,13 @@ public class AlienController {
 	
 	@RequestMapping("/aliens")
 	@ResponseBody
-	public String getAlien() {
-		return repo.findAll().toString();
+	public List<Alien> getAlien() {
+		return repo.findAll();
 	}
 	
 	@RequestMapping("/alien/{aid}")
 	@ResponseBody
-	public String getAlien(@PathVariable("aid") int aid) {
-		return repo.findById(aid).toString();
+	public Optional<Alien> getAlien(@PathVariable("aid") int aid) {
+		return repo.findById(aid);
 	}
 }
